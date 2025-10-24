@@ -548,16 +548,16 @@ Exploiting a new variable to keep track of the point we are at in the program is
     \begin{column}{0.50\textwidth}
 \begin{lstlisting}[style=cppstyle,numbers=none]
 Task runningExample(Input<bool>& reroll, Input<int>& quantity) {
-  int result = rollTwoDice();
-  if (result < 7) {
-    bool do_reroll = co_await reroll;
-    if (do_reroll) {
-      result = rollTwoDice();
-      co_return result;               
-    }
+ int result = rollTwoDice();
+ if (result < 7) {
+  bool do_reroll = co_await reroll;
+  if (do_reroll) {
+   result = rollTwoDice();
+   co_return result;               
   }
-  result += co_await quantity;
-  co_return result;}
+ }
+ result += co_await quantity;
+ co_return result;}
 \end{lstlisting}
 \end{column}
     \begin{column}{0.45\textwidth}
@@ -577,7 +577,7 @@ int main() {
     \end{column}
 \end{columns}
 
-CPP coroutines are not copiable or serializable. Copiable/serializable strongly typechecked zero-overhead coroutines are very challenging to implement. 
+CPP coroutines are not copiable or serializable. Copiable/serializable strongly typechecked zero-overhead coroutines are very challenging to implement.  We have a paper on this topic: \href{https://arxiv.org/abs/2504.19625} {https://arxiv.org/abs/2504.19625}
 
 \end{frame}
 
